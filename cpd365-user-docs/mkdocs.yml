@@ -1,0 +1,222 @@
+site_name: CPD365 User Guide
+site_description: User documentation for the CPD365 online CPD platform
+site_url: https://docs.cpd365.example.com
+site_author: CPD365 Team
+copyright: "© {{ now().year }} CPD365. All rights reserved."
+
+# GitHub repository configuration (used for repo and edit links)
+repo_name: hashimzaffar/cpd365-docs
+repo_url: https://github.com/hashimzaffar/cpd365-docs
+# If your docs live in /docs on the default branch, uncomment and adjust:
+# edit_uri: edit/main/docs/
+
+# MkDocs core options
+use_directory_urls: true          # Cleaner URLs without .html
+
+theme:
+  name: material
+
+  # Branding
+  logo: visuals/logo.png
+  # favicon: visuals/favicon.png  # Add a favicon for stronger branding
+
+  # Optional icon configuration for a more polished header
+  # icon:
+  #   logo: material/school
+  #   repo: fontawesome/brands/github
+
+  language: en
+
+  # UI/UX feature toggles
+  features:
+    # Navigation & layout
+    - navigation.tabs            # Top-level sections as tabs
+    - navigation.sections        # Structured sidebar by section
+    - navigation.top             # "Back to top" button
+    - navigation.instant         # Faster page transitions
+    - navigation.tracking        # Highlight active section while scrolling
+    - navigation.footer          # Prev/next links in footer
+    - navigation.path            # Breadcrumb-style path
+    - navigation.indexes         # Section landing pages (index.md per folder)
+
+    # Table of contents
+    - toc.integrate              # Integrate TOC into sidebar
+
+    # Search
+    - search.highlight
+    - search.suggest
+    - search.share               # Shareable search URLs
+
+    # Content
+    - content.code.annotate
+    - content.code.copy          # Copy button on code blocks
+    - content.tabs.link          # Linkable content tabs
+    - content.action.edit        # "Edit this page" (uses repo_url/edit_uri)
+    - content.tooltips           # Hover tooltips with Markdown support
+
+  # Color palette (light & dark mode)
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo             # Clean, professional primary color
+      accent: deep purple         # Subtle but distinct accent
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  # Typography
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+
+  # Hooks for visual/behavior overrides
+  # extra_css:
+  #   - assets/styles/overrides.css
+  # extra_javascript:
+  #   - assets/js/extra.js
+
+# -------------------------------------------------------------------
+# Navigation structure
+# -------------------------------------------------------------------
+nav:
+  - Home: index.md
+
+  - Getting Started:
+      - What is CPD365?: getting-started/overview.md
+      - Sign Up & Login: getting-started/sign-up-login.md
+      - Your First Course: getting-started/first-course.md
+
+  - Learner Guide:
+      - Dashboard Overview: learner-guide/dashboard.md
+      - Browsing the Course Catalog: learner-guide/course-catalog.md
+      - Taking Courses: learner-guide/taking-courses.md
+      - Certificates & CPD Tracking: learner-guide/certificates-cpd-tracking.md
+      - Profile & Settings: learner-guide/profile-settings.md
+
+  - Admin Guide:
+      - Organization Setup: admin-guide/org-setup.md
+      - Managing Learners & Teams: admin-guide/user-management.md
+      - Assigning Courses & Programs: admin-guide/course-assignment.md
+      - Reports & Analytics: admin-guide/reporting-analytics.md
+      - NDIS Program Admin: admin-guide/ndis-program-admin.md
+
+  - Billing & Accounts:
+      - Plans & Pricing: billing/plans-pricing.md
+      - Invoices & Payments: billing/invoices-payments.md
+      - Renewals & Cancellations: billing/renewals-cancellations.md
+
+  - Help & Support:
+      - FAQ: support/faq.md
+      - Troubleshooting: support/troubleshooting.md
+      - Release Notes: support/release-notes.md
+
+# -------------------------------------------------------------------
+# Markdown extensions
+# -------------------------------------------------------------------
+markdown_extensions:
+  # Core Markdown enhancements
+  - admonition                   # Note, Tip, Warning, etc.
+  - toc:
+      permalink: true            # Anchor links on headings
+  - tables
+  - def_list                     # Definition lists
+  - abbr                         # Abbreviations
+  - footnotes                    # Footnote support
+
+  # Advanced code fences, including Mermaid diagrams
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+  # Collapsible sections
+  - pymdownx.details
+
+  # Syntax highlighting & inline code highlighting
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+
+  # Snippets & includes
+  - pymdownx.snippets
+
+  # Tabs (e.g., multiple variants of instructions)
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Task lists with nicer checkboxes
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Emoji with Material-style SVG rendering
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+  # Text highlighting and keyboard keys
+  - pymdownx.mark
+  - pymdownx.keys
+
+  # Automatic linking of URLs, GitHub references, etc.
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: hashimzaffar
+      repo: cpd365-docs
+
+  # Math support (inline and block)
+  - pymdownx.arithmatex:
+      generic: true
+
+  # Attribute lists on Markdown elements
+  - attr_list
+
+# -------------------------------------------------------------------
+# Plugins
+# -------------------------------------------------------------------
+plugins:
+  - search:
+      lang: en
+      separator: "[\\s\\-]+"
+      min_search_length: 2
+
+  # Optional: enable when the plugin is installed
+  # - sitemap
+  # - offline
+  # - git-revision-date-localized:
+  #     type: timeago
+
+# -------------------------------------------------------------------
+# Extra configuration (metadata, integrations, etc.)
+# -------------------------------------------------------------------
+extra:
+  product:
+    name: CPD365
+    tagline: "Continuous professional development, simplified."
+  contact:
+    support_email: "support@cpd365.example.com"
+    docs_feedback_email: "docs@cpd365.example.com"
+
+  # Version badge / future doc versioning integration
+  # version:
+  #   provider: mike
+
+  # Social links (icons appear in header/footer if configured in theme)
+  # social:
+  #   - icon: fontawesome/brands/linkedin
+  #     link: https://www.linkedin.com/company/cpd365
+  #   - icon: fontawesome/brands/twitter
+  #     link: https://twitter.com/cpd365
+
+  # Analytics example (uncomment and configure to enable)
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
